@@ -1,0 +1,38 @@
+
+# Embeddings + Models
+sentence-transformers
+huggingface-hub
+
+
+pybase64
+
+# Core LangChain packages
+langchain
+langchain-community
+langchain-core
+
+# Google Gemini integration
+langchain-google-genai
+google-generativeai
+
+# Vector store and embeddings
+chromadb
+
+# PDF parsing and unstructured data
+unstructured[all-docs]
+pdf2image
+pillow
+lxml
+
+# Utilities
+tiktoken
+python-dotenv
+
+# Optional display / Jupyter support
+ipython
+
+# Compatibility for async and JSON serialization
+requests
+numpy
+jupyter
+streamlit
