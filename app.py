@@ -46,8 +46,8 @@ def build_prompt(kwargs):
     return ChatPromptTemplate.from_messages([HumanMessage(content=prompt_content)])
 
 # --- Streamlit UI ---
-st.set_page_config(page_title="📄 PDF Q&A with Gemini", layout="wide")
-st.title("🤖 Multimodal PDF Q&A (Gemini + LangChain)")
+st.set_page_config(page_title="PDF Q&A with Gemini", layout="wide")
+st.title("Multimodal PDF Q&A (Gemini + LangChain)")
 
 uploaded_file = st.file_uploader("Upload your PDF file", type=["pdf"])
 
@@ -56,7 +56,7 @@ if uploaded_file:
         tmp.write(uploaded_file.read())
         pdf_path = tmp.name
 
-    st.success("✅ PDF uploaded successfully!")
+    st.success("PDF uploaded successfully!")
 
     loader = PyPDFLoader(pdf_path)
     pages = loader.load()
@@ -68,7 +68,7 @@ if uploaded_file:
     vectorstore = Chroma.from_documents(chunks, embedding=embeddings)
     retriever = vectorstore.as_retriever(search_kwargs={"k": 5})
 
-    st.info("💡 Vectorstore created successfully — ready for queries!")
+    st.info("Vectorstore created successfully — ready for queries!")
 
     question = st.text_input("Ask a question about the PDF:")
 
@@ -81,8 +81,8 @@ if uploaded_file:
             | StrOutputParser()
         )
 
-        with st.spinner("Thinking... 🤔"):
-            response = chain.invoke({"question": question})
+        with st.spinner("Thinking..."):
+            response = chain.invoke(question)
 
-        st.subheader("🔹 Gemini Answer:")
+        st.subheader("Gemini Answer:")
         st.write(response)
